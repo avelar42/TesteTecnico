@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,20 @@ namespace TesteTecnico.Controllers
     [Route("[controller]")]
     public class CalculaJurosController : ControllerBase
     {
+        private CalculoTaxaJuros _taxaJuros = new CalculoTaxaJuros();
+
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(decimal valorInicial, int tempo)
         {
-            return new JsonResult("CalculadoraJuros");
+            var taxaJuros = _taxaJuros.GetTaxaDecimal();
+            var result = Convert.ToDouble(valorInicial) * Math.Pow(1 + Convert.ToDouble(taxaJuros), tempo);
+            return new JsonResult(Convert.ToDecimal(result.ToString("N2")));
         }
+
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+            
+        //}
     }
 }
