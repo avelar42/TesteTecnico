@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace TesteTecnico.Controllers
 {
@@ -17,14 +15,8 @@ namespace TesteTecnico.Controllers
         public IActionResult Get(decimal valorInicial, int tempo)
         {
             var taxaJuros = _taxaJuros.GetTaxaDecimal();
-            var result = Convert.ToDouble(valorInicial) * Math.Pow(1 + Convert.ToDouble(taxaJuros), tempo);
-            return new JsonResult(Convert.ToDecimal(result.ToString("N2")));
+            var resultado = (Convert.ToDouble(valorInicial) * Math.Pow(1 + Convert.ToDouble(taxaJuros), tempo)) * 100;
+            return new JsonResult((Convert.ToDecimal(Math.Truncate(resultado)) / 100) * 1.0m);
         }
-
-        //[HttpGet]
-        //public IActionResult Get()
-        //{
-            
-        //}
     }
 }
