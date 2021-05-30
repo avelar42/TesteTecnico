@@ -4,6 +4,9 @@ using Xunit;
 
 namespace TesteCalculadoras
 {
+    /// <summary>
+    /// Classe responsável pelos testes unitarios.
+    /// </summary>
     public class TesteTaxas
     {
         private readonly CalculoTaxaJuros _taxaJuros;
@@ -13,7 +16,9 @@ namespace TesteCalculadoras
             _taxaJuros = new CalculoTaxaJuros();
             _calculadoraJurosCompostos = new CalculadoraJurosCompostos();
         }
-
+        /// <summary>
+        /// Classe responsável pela validação dos calculos unitarios de taxa de juros em decimal.
+        /// </summary>
         [Fact]
         public void ValidarCalculoDeTaxa()
         {
@@ -21,7 +26,9 @@ namespace TesteCalculadoras
             var taxaJuros = _taxaJuros.GetTaxaDecimal();
             Assert.Equal(taxaJuros, result);
         }
-
+        /// <summary>
+        /// Classe responsável pela validação dos calculos unitarios de taxa de juros compostos.
+        /// </summary>
         [Fact]
         public void ValidarCalculadoraJurosCompostos()
         {

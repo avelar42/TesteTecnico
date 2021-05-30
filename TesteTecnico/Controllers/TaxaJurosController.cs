@@ -9,15 +9,18 @@ namespace TesteTecnico.Controllers
 {
     
     [ApiController]
-    [Route("[controller]")]
+    [Route("taxaJuros")]
     public class TaxaJurosController : ControllerBase
     {
         private CalculoTaxaJuros taxaJuros = new CalculoTaxaJuros();
 
+        /// <summary>
+        /// Classe responsável pela chegada dos dados a API e retornar a taxa de juros em decimal.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
-            string result = "0,01";
             return new JsonResult(taxaJuros.GetTaxaDecimal());
         }
     }

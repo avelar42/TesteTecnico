@@ -7,6 +7,12 @@ namespace Service
     public class CalculadoraJurosCompostos
     {
         private CalculoTaxaJuros _taxaJuros = new CalculoTaxaJuros();
+        /// <summary>
+        /// Classe responsável pelos calculo de juros compostos.
+        /// <param name="valorInicial"/>
+        /// <param name="tempo"/>
+        /// </summary>
+        /// <returns>decimal</returns>
         public decimal CalcularJurosCompostos(decimal valorInicial, int tempo)
         {
             var taxaJuros = _taxaJuros.GetTaxaDecimal();

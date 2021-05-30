@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace TesteTecnico.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class showmethecodeController : ControllerBase
+    [Route("showmethecode")]
+    public class ShowmethecodeController : ControllerBase
     {
-
+        /// <summary>
+        /// Classe responsável pela chegada dos dados a API e retornar o link desse projeto no github.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
